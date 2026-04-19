@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: checkout-db
+    environment:
+      POSTGRES_DB: checkout
+      POSTGRES_USER: Mmo2025
+      POSTGRES_PASSWORD: Mmo321321
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - checkout-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U Mmo2025 -d checkout -q" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  checkout-service:
+    build: .
+    image: checkout-service:latest
+    container_name: checkout-service
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/checkout
+      SPRING_DATASOURCE_USERNAME: Mmo2025
+      SPRING_DATASOURCE_PASSWORD: Mmo321321
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - checkout-network
+
+networks:
+  checkout-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

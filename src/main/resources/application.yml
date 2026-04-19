@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: checkout-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/checkout
+    driver-class-name: org.postgresql.Driver
+    username: Mmo2025
+    password: Mmo321321
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  messages:
+    basename: messages
+    encoding: UTF-8
