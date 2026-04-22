@@ -43,6 +43,7 @@ public class OrderService {
         return findOrder(orderId);
     }
 
+    @Transactional
     public PaymentResponse payForOrder(Long orderId) {
         Order order = validateOrderPayableState(orderId);
 

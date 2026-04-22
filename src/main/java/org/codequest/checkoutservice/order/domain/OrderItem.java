@@ -25,6 +25,9 @@ public class OrderItem {
     @Column(nullable = false)
     private BigDecimal price;
 
+    protected OrderItem() {
+    }
+
     public OrderItem(Order order, String productId, int quantity, BigDecimal price) {
         this.order = order;
         this.productId = productId;
