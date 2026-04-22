@@ -4,7 +4,7 @@ import org.codequest.checkoutservice.cart.domain.Cart;
 import org.codequest.checkoutservice.cart.dto.AddItemRequest;
 import org.codequest.checkoutservice.cart.dto.CartResponse;
 import org.codequest.checkoutservice.cart.service.CartService;
-import org.codequest.checkoutservice.shared.model.OrderSummary;
+import org.codequest.checkoutservice.shared.model.order.OrderSummary;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

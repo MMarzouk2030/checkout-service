@@ -2,9 +2,9 @@ package org.codequest.checkoutservice.cart.service;
 
 import org.codequest.checkoutservice.cart.domain.Cart;
 import org.codequest.checkoutservice.cart.repository.CartRepository;
-import org.codequest.checkoutservice.shared.model.CartCheckoutData;
+import org.codequest.checkoutservice.shared.model.cart.CartCheckoutData;
 import org.codequest.checkoutservice.shared.facade.order.OrderFacade;
-import org.codequest.checkoutservice.shared.model.OrderSummary;
+import org.codequest.checkoutservice.shared.model.order.OrderSummary;
 import org.codequest.checkoutservice.shared.exception.ErrorCode;
 import org.codequest.checkoutservice.shared.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;

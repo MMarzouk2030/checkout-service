@@ -2,6 +2,7 @@ package org.codequest.checkoutservice.shared.exception;
 
 import org.codequest.checkoutservice.cart.exception.CartException;
 import org.codequest.checkoutservice.order.exception.OrderException;
+import org.codequest.checkoutservice.payment.exception.PaymentException;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +30,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(OrderException.class)
     public ResponseEntity<ErrorResponse> handleOrderException(OrderException exc) {
-        String message = resolve(exc.getErrorCode().getMessageKey());
+        String message = resolve(exc.getErrorCode().getMessageKey(), exc.getArgs());
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
+                .badRequest()
                 .body(new ErrorResponse(exc.getErrorCode().name(), message));
     }
 
@@ -43,7 +44,19 @@ public class GlobalExceptionHandler {
                 .body(new ErrorResponse(exc.getErrorCode().name(), message));
     }
 
+    @ExceptionHandler(PaymentException.class)
+    public ResponseEntity<ErrorResponse> handlePaymentException(PaymentException exc) {
+        String message = resolve(exc.getErrorCode().getMessageKey(), exc.getArgs());
+        return ResponseEntity
+                .badRequest()
+                .body(new ErrorResponse(exc.getErrorCode().name(), message));
+    }
+
     private String resolve(String key) {
         return messageSource.getMessage(key, null, Locale.getDefault());
+    }
+
+    private String resolve(String key, Object[] args) {
+        return messageSource.getMessage(key, args, Locale.getDefault());
     }
 }

@@ -1,6 +1,7 @@
 package org.codequest.checkoutservice.order.domain;
 
 import jakarta.persistence.*;
+import org.codequest.checkoutservice.shared.model.order.OrderState;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -88,5 +89,9 @@ public class Order {
 
     public void addItem(String productId, int quantity, BigDecimal price) {
         items.add(new OrderItem(this, productId, quantity, price));
+    }
+
+    public boolean isInPayableState() {
+        return this.orderState == OrderState.CREATED || this.orderState == OrderState.PAYMENT_FAILED;
     }
 }

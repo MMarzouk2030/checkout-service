@@ -2,7 +2,8 @@ package org.codequest.checkoutservice.order.api;
 
 import org.codequest.checkoutservice.order.domain.Order;
 import org.codequest.checkoutservice.order.service.OrderService;
-import org.codequest.checkoutservice.shared.model.OrderSummary;
+import org.codequest.checkoutservice.shared.model.order.OrderSummary;
+import org.codequest.checkoutservice.shared.model.payment.PaymentResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,12 +12,6 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
 
     private final OrderService orderService;
-//    private final PaymentService paymentService;
-
-//    public OrderController(OrderService orderService, PaymentService paymentService) {
-//        this.orderService = orderService;
-//        this.paymentService = paymentService;
-//    }
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
@@ -28,11 +23,11 @@ public class OrderController {
         return ResponseEntity.ok(OrderSummary.from(order));
     }
 
-//    @PostMapping("/{orderId}/payment/start")
-//    public ResponseEntity<PaymentResponse> startPayment(@PathVariable UUID orderId) {
-//        Payment payment = paymentService.startPayment(orderId);
-//        return ResponseEntity.ok(PaymentResponse.from(payment));
-//    }
+    @PostMapping("/{orderId}/payment/start")
+    public ResponseEntity<PaymentResponse> startPayment(@PathVariable Long orderId) {
+        PaymentResponse paymentResponse = orderService.payForOrder(orderId);
+        return ResponseEntity.ok(paymentResponse);
+    }
 
     @PutMapping("/{orderId}/cancel")
     public ResponseEntity<OrderSummary> cancelOrder(@PathVariable Long orderId) {

@@ -2,11 +2,12 @@ package org.codequest.checkoutservice.order.domain;
 
 import org.codequest.checkoutservice.order.exception.OrderErrorCode;
 import org.codequest.checkoutservice.order.exception.OrderException;
+import org.codequest.checkoutservice.shared.model.order.OrderState;
 
 import java.util.Map;
 import java.util.Set;
 
-import static org.codequest.checkoutservice.order.domain.OrderState.*;
+import static org.codequest.checkoutservice.shared.model.order.OrderState.*;
 
 /**
  * Order state machine.

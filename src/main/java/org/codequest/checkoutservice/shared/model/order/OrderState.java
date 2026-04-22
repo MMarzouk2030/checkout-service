@@ -1,4 +1,4 @@
-package org.codequest.checkoutservice.order.domain;
+package org.codequest.checkoutservice.shared.model.order;
 
 public enum OrderState {
 
