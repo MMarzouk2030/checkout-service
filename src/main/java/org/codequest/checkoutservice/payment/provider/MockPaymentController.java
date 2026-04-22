@@ -1,6 +1,7 @@
 package org.codequest.checkoutservice.payment.provider;
 
 import org.codequest.checkoutservice.shared.model.payment.PaymentRequest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,14 +11,15 @@ import java.util.Map;
  * Simulates an external payment provider.
  * Use these endpoints to trigger payment confirmation or failure.
  */
+@Profile("local")
 @RestController
 @RequestMapping("/mock/payments")
 public class MockPaymentController {
 
     private final MockPaymentProviderService mockPaymentProviderService;
 
-    public MockPaymentController(MockPaymentProviderService mockPaymentProviderService1) {
-        this.mockPaymentProviderService = mockPaymentProviderService1;
+    public MockPaymentController(MockPaymentProviderService mockPaymentProviderService) {
+        this.mockPaymentProviderService = mockPaymentProviderService;
     }
 
     @PostMapping("/start")

@@ -1,0 +1,323 @@
+2026-04-22 04:30:22.672 INFO  [main] o.c.c.CheckoutServiceApplication - Starting CheckoutServiceApplication using Java 21.0.8 with PID 50760 (D:\Z_Folder\checkout-service\target\classes started by Mahmo in D:\Z_Folder\checkout-service)
+2026-04-22 04:30:22.674 INFO  [main] o.c.c.CheckoutServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-22 04:30:23.719 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22 04:30:24.499 WARN  [main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22 04:30:24.658 INFO  [main] o.c.c.CheckoutServiceApplication - Started CheckoutServiceApplication in 2.342 seconds (process running for 2.572)
+2026-04-22 04:36:47.706 INFO  [main] o.c.c.CheckoutServiceApplication - Starting CheckoutServiceApplication using Java 21.0.8 with PID 18292 (D:\Z_Folder\checkout-service\target\classes started by Mahmo in D:\Z_Folder\checkout-service)
+2026-04-22 04:36:47.707 INFO  [main] o.c.c.CheckoutServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-22 04:36:48.804 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22 04:36:49.597 WARN  [main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22 04:36:49.745 INFO  [main] o.c.c.CheckoutServiceApplication - Started CheckoutServiceApplication in 2.381 seconds (process running for 2.621)
+2026-04-22 04:38:29.161 INFO  [main] o.c.c.i.CheckoutIntegrationTest - Starting CheckoutIntegrationTest using Java 21.0.8 with PID 35656 (started by Mahmo in D:\Z_Folder\checkout-service)
+2026-04-22 04:38:29.162 INFO  [main] o.c.c.i.CheckoutIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-22 04:38:30.628 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22 04:38:31.770 WARN  [main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22 04:38:32.263 INFO  [main] o.c.c.i.CheckoutIntegrationTest - Started CheckoutIntegrationTest in 3.433 seconds (process running for 5.347)
+2026-04-22 04:38:32.328 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:32.388 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=1]
+2026-04-22 04:38:32.459 INFO  [main] o.c.c.cart.api.CartController - POST /carts/1/items [productId=P1, quantity=2]
+2026-04-22 04:38:32.480 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=1, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:32.487 INFO  [main] o.c.c.cart.api.CartController - POST /carts/1/checkout
+2026-04-22 04:38:32.487 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=1]
+2026-04-22 04:38:32.742 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=1, cartId=1, total=19.98]
+2026-04-22 04:38:32.743 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=1, orderId=1]
+2026-04-22 04:38:32.755 INFO  [main] o.c.c.order.api.OrderController - POST /orders/1/payment/start
+2026-04-22 04:38:32.756 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=1, total=19.98]
+2026-04-22 04:38:32.771 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=1, amount=19.98]
+2026-04-22 04:38:32.777 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=1, paymentId=c9cc09c0-e63f-46f1-9065-abff22369571, externalPaymentId=ext-dup-pay]
+2026-04-22 04:38:32.777 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=1, externalPaymentId=ext-dup-pay]
+2026-04-22 04:38:32.783 INFO  [main] o.c.c.order.api.OrderController - POST /orders/1/payment/start
+2026-04-22 04:38:32.784 WARN  [main] o.c.c.order.service.OrderService - Order is not in a payable state [orderId=1, currentState=PENDING_PAYMENT]
+2026-04-22 04:38:32.788 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Order business rule violation [code=INVALID_ORDER_PAYABLE_STATE]
+2026-04-22 04:38:32.798 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:32.799 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=2]
+2026-04-22 04:38:32.800 INFO  [main] o.c.c.cart.api.CartController - POST /carts/2/checkout
+2026-04-22 04:38:32.801 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=2]
+2026-04-22 04:38:32.802 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Cart business rule violation [code=CART_EMPTY]
+2026-04-22 04:38:32.808 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:32.809 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=3]
+2026-04-22 04:38:32.811 INFO  [main] o.c.c.cart.api.CartController - POST /carts/3/items [productId=P1, quantity=2]
+2026-04-22 04:38:32.812 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=3, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:32.815 INFO  [main] o.c.c.cart.api.CartController - POST /carts/3/checkout
+2026-04-22 04:38:32.815 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=3]
+2026-04-22 04:38:32.817 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=2, cartId=3, total=19.98]
+2026-04-22 04:38:32.826 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=3, orderId=2]
+2026-04-22 04:38:32.828 INFO  [main] o.c.c.order.api.OrderController - GET /orders/2
+2026-04-22 04:38:32.852 INFO  [main] o.c.c.order.api.OrderController - POST /orders/2/payment/start
+2026-04-22 04:38:32.853 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=2, total=19.98]
+2026-04-22 04:38:32.854 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=2, amount=19.98]
+2026-04-22 04:38:32.855 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=2, paymentId=8c8d2519-73f8-43a3-a0a0-ad18d76c29b5, externalPaymentId=ext-happy-1]
+2026-04-22 04:38:32.855 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=2, externalPaymentId=ext-happy-1]
+2026-04-22 04:38:32.858 INFO  [main] o.c.c.order.api.OrderController - GET /orders/2
+2026-04-22 04:38:32.865 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-happy-1, status=CONFIRMED]
+2026-04-22 04:38:32.866 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-happy-1, status=CONFIRMED]
+2026-04-22 04:38:32.869 INFO  [main] o.c.c.payment.service.PaymentService - Payment confirmed [externalPaymentId=ext-happy-1, orderId=2]
+2026-04-22 04:38:32.869 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-happy-1, orderId=2, newOrderState=PAID]
+2026-04-22 04:38:32.870 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=2, from=PENDING_PAYMENT, to=PAID]
+2026-04-22 04:38:32.873 INFO  [main] o.c.c.order.api.OrderController - GET /orders/2
+2026-04-22 04:38:32.880 INFO  [main] o.c.c.order.api.OrderController - GET /orders/9999
+2026-04-22 04:38:32.881 WARN  [main] o.c.c.order.service.OrderService - Order not found [orderId=9999]
+2026-04-22 04:38:32.881 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Resource not found [code=ORDER_NOT_FOUND]
+2026-04-22 04:38:32.886 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:32.887 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=4]
+2026-04-22 04:38:32.890 INFO  [main] o.c.c.cart.api.CartController - POST /carts/4/items [productId=P1, quantity=2]
+2026-04-22 04:38:32.891 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=4, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:32.894 INFO  [main] o.c.c.cart.api.CartController - POST /carts/4/checkout
+2026-04-22 04:38:32.894 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=4]
+2026-04-22 04:38:32.897 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=3, cartId=4, total=19.98]
+2026-04-22 04:38:32.897 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=4, orderId=3]
+2026-04-22 04:38:32.899 INFO  [main] o.c.c.order.api.OrderController - POST /orders/3/payment/start
+2026-04-22 04:38:32.900 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=3, total=19.98]
+2026-04-22 04:38:32.901 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=3, amount=19.98]
+2026-04-22 04:38:32.902 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=3, paymentId=f1d2ea68-f734-4022-877c-4e748ba9b4d7, externalPaymentId=ext-guard-1]
+2026-04-22 04:38:32.902 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=3, externalPaymentId=ext-guard-1]
+2026-04-22 04:38:32.904 INFO  [main] o.c.c.order.api.OrderController - POST /orders/3/payment/start
+2026-04-22 04:38:32.904 WARN  [main] o.c.c.order.service.OrderService - Order is not in a payable state [orderId=3, currentState=PENDING_PAYMENT]
+2026-04-22 04:38:32.906 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Order business rule violation [code=INVALID_ORDER_PAYABLE_STATE]
+2026-04-22 04:38:32.911 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:32.912 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=5]
+2026-04-22 04:38:32.914 INFO  [main] o.c.c.cart.api.CartController - POST /carts/5/items [productId=P1, quantity=2]
+2026-04-22 04:38:32.915 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=5, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:32.917 INFO  [main] o.c.c.cart.api.CartController - POST /carts/5/checkout
+2026-04-22 04:38:32.917 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=5]
+2026-04-22 04:38:32.920 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=4, cartId=5, total=19.98]
+2026-04-22 04:38:32.920 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=5, orderId=4]
+2026-04-22 04:38:32.922 INFO  [main] o.c.c.order.api.OrderController - POST /orders/4/payment/start
+2026-04-22 04:38:32.922 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=4, total=19.98]
+2026-04-22 04:38:32.923 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=4, amount=19.98]
+2026-04-22 04:38:32.924 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=4, paymentId=8f6f508e-b7c4-41b0-a4bd-e2d0bf640e48, externalPaymentId=ext-dup-1]
+2026-04-22 04:38:32.924 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=4, externalPaymentId=ext-dup-1]
+2026-04-22 04:38:32.927 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:32.928 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:32.928 INFO  [main] o.c.c.payment.service.PaymentService - Payment confirmed [externalPaymentId=ext-dup-1, orderId=4]
+2026-04-22 04:38:32.928 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-dup-1, orderId=4, newOrderState=PAID]
+2026-04-22 04:38:32.929 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=4, from=PENDING_PAYMENT, to=PAID]
+2026-04-22 04:38:32.932 INFO  [main] o.c.c.order.api.OrderController - GET /orders/4
+2026-04-22 04:38:32.934 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:32.934 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:32.935 INFO  [main] o.c.c.payment.service.PaymentService - Idempotent webhook — payment already in target state [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:32.937 INFO  [main] o.c.c.order.api.OrderController - GET /orders/4
+2026-04-22 04:38:32.944 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=unknown-ext, status=CONFIRMED]
+2026-04-22 04:38:32.944 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=unknown-ext, status=CONFIRMED]
+2026-04-22 04:38:32.945 WARN  [main] o.c.c.payment.service.PaymentService - Webhook for unknown payment [externalPaymentId=unknown-ext]
+2026-04-22 04:38:32.946 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Resource not found [code=PAYMENT_NOT_FOUND]
+2026-04-22 04:38:32.950 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:32.951 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=6]
+2026-04-22 04:38:32.953 INFO  [main] o.c.c.cart.api.CartController - POST /carts/6/items [productId=P1, quantity=2]
+2026-04-22 04:38:32.954 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=6, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:32.957 INFO  [main] o.c.c.cart.api.CartController - POST /carts/6/checkout
+2026-04-22 04:38:32.957 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=6]
+2026-04-22 04:38:32.960 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=5, cartId=6, total=19.98]
+2026-04-22 04:38:32.961 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=6, orderId=5]
+2026-04-22 04:38:32.963 INFO  [main] o.c.c.cart.api.CartController - POST /carts/6/checkout
+2026-04-22 04:38:32.964 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=6]
+2026-04-22 04:38:32.965 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Cart business rule violation [code=CART_ALREADY_CHECKED_OUT]
+2026-04-22 04:38:32.966 INFO  [main] o.c.c.order.api.OrderController - GET /orders/5
+2026-04-22 04:38:32.973 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:32.974 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=7]
+2026-04-22 04:38:32.976 INFO  [main] o.c.c.cart.api.CartController - POST /carts/7/items [productId=P1, quantity=2]
+2026-04-22 04:38:32.978 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=7, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:32.980 INFO  [main] o.c.c.cart.api.CartController - POST /carts/7/checkout
+2026-04-22 04:38:32.980 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=7]
+2026-04-22 04:38:32.984 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=6, cartId=7, total=19.98]
+2026-04-22 04:38:32.984 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=7, orderId=6]
+2026-04-22 04:38:32.986 INFO  [main] o.c.c.order.api.OrderController - POST /orders/6/payment/start
+2026-04-22 04:38:32.987 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=6, total=19.98]
+2026-04-22 04:38:32.989 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=6, amount=19.98]
+2026-04-22 04:38:32.989 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=6, paymentId=4442ba28-a4f4-4fe4-bfa1-1236df4d56c0, externalPaymentId=ext-fail-1]
+2026-04-22 04:38:32.989 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=6, externalPaymentId=ext-fail-1]
+2026-04-22 04:38:32.993 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-fail-1, status=FAILED]
+2026-04-22 04:38:32.993 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-fail-1, status=FAILED]
+2026-04-22 04:38:32.994 INFO  [main] o.c.c.payment.service.PaymentService - Payment failed [externalPaymentId=ext-fail-1, orderId=6]
+2026-04-22 04:38:32.995 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-fail-1, orderId=6, newOrderState=PAYMENT_FAILED]
+2026-04-22 04:38:32.996 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=6, from=PENDING_PAYMENT, to=PAYMENT_FAILED]
+2026-04-22 04:38:32.999 INFO  [main] o.c.c.order.api.OrderController - GET /orders/6
+2026-04-22 04:38:33.001 INFO  [main] o.c.c.order.api.OrderController - POST /orders/6/payment/start
+2026-04-22 04:38:33.002 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=6, total=19.98]
+2026-04-22 04:38:33.003 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=6, amount=19.98]
+2026-04-22 04:38:33.004 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=6, paymentId=f3a704dc-b669-474b-80d7-b38c9fa35dfa, externalPaymentId=ext-fail-2]
+2026-04-22 04:38:33.004 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=6, externalPaymentId=ext-fail-2]
+2026-04-22 04:38:33.007 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-fail-2, status=CONFIRMED]
+2026-04-22 04:38:33.007 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-fail-2, status=CONFIRMED]
+2026-04-22 04:38:33.008 INFO  [main] o.c.c.payment.service.PaymentService - Payment confirmed [externalPaymentId=ext-fail-2, orderId=6]
+2026-04-22 04:38:33.008 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-fail-2, orderId=6, newOrderState=PAID]
+2026-04-22 04:38:33.009 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=6, from=PENDING_PAYMENT, to=PAID]
+2026-04-22 04:38:33.011 INFO  [main] o.c.c.order.api.OrderController - GET /orders/6
+2026-04-22 04:38:33.112 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=1, total=10]
+2026-04-22 04:38:33.112 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=1, externalPaymentId=ext-2]
+2026-04-22 04:38:33.115 WARN  [main] o.c.c.order.service.OrderService - Order not found [orderId=99]
+2026-04-22 04:38:33.117 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=1, from=CREATED, to=PENDING_PAYMENT]
+2026-04-22 04:38:33.118 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=1, total=10]
+2026-04-22 04:38:33.119 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=1, externalPaymentId=ext-1]
+2026-04-22 04:38:33.121 WARN  [main] o.c.c.order.service.OrderService - Order is not in a payable state [orderId=1, currentState=PENDING_PAYMENT]
+2026-04-22 04:38:33.125 WARN  [main] o.c.c.order.service.OrderService - Order not found [orderId=99]
+2026-04-22 04:38:33.127 WARN  [main] o.c.c.order.service.OrderService - Order not found [orderId=99]
+2026-04-22 04:38:33.130 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=null, cartId=1, total=10]
+2026-04-22 04:38:33.131 INFO  [main] o.c.c.order.service.OrderService - Order cancelled [orderId=1]
+2026-04-22 04:38:33.133 INFO  [main] o.c.c.order.service.OrderService - Order already exists for cart, returning existing [cartId=1, orderId=null]
+2026-04-22 04:38:33.176 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=1]
+2026-04-22 04:38:33.177 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=1, orderId=1]
+2026-04-22 04:38:33.179 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=1, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:33.180 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=99]
+2026-04-22 04:38:33.181 WARN  [main] o.c.c.cart.service.CartService - Cart not found [cartId=99]
+2026-04-22 04:38:33.182 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=null]
+2026-04-22 04:38:33.185 WARN  [main] o.c.c.cart.service.CartService - Cart not found [cartId=99]
+2026-04-22 04:38:33.187 WARN  [main] o.c.c.cart.service.CartService - Cart not found [cartId=99]
+2026-04-22 04:38:33.241 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-123, status=CONFIRMED]
+2026-04-22 04:38:33.241 INFO  [main] o.c.c.payment.service.PaymentService - Payment confirmed [externalPaymentId=ext-123, orderId=1]
+2026-04-22 04:38:33.252 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-123, status=FAILED]
+2026-04-22 04:38:33.252 INFO  [main] o.c.c.payment.service.PaymentService - Payment failed [externalPaymentId=ext-123, orderId=1]
+2026-04-22 04:38:33.255 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-123, status=FAILED]
+2026-04-22 04:38:33.255 WARN  [main] o.c.c.payment.service.PaymentService - Conflicting webhook — payment already terminal [externalPaymentId=ext-123, currentStatus=CONFIRMED, incomingStatus=FAILED]
+2026-04-22 04:38:33.262 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=1, amount=10]
+2026-04-22 04:38:33.262 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=1, paymentId=null, externalPaymentId=ext-123]
+2026-04-22 04:38:33.267 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-123, status=NOT_A_STATUS]
+2026-04-22 04:38:33.269 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-123, status=PENDING]
+2026-04-22 04:38:33.269 INFO  [main] o.c.c.payment.service.PaymentService - Idempotent webhook — payment already in target state [externalPaymentId=ext-123, status=PENDING]
+2026-04-22 04:38:33.270 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-123, status=CONFIRMED]
+2026-04-22 04:38:33.270 INFO  [main] o.c.c.payment.service.PaymentService - Idempotent webhook — payment already in target state [externalPaymentId=ext-123, status=CONFIRMED]
+2026-04-22 04:38:33.272 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=unknown, status=CONFIRMED]
+2026-04-22 04:38:33.272 WARN  [main] o.c.c.payment.service.PaymentService - Webhook for unknown payment [externalPaymentId=unknown]
+2026-04-22 04:38:33.274 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-123, status=FAILED]
+2026-04-22 04:38:33.274 INFO  [main] o.c.c.payment.service.PaymentService - Idempotent webhook — payment already in target state [externalPaymentId=ext-123, status=FAILED]
+2026-04-22 04:38:33.276 WARN  [main] o.c.c.payment.service.PaymentService - Duplicate payment attempt rejected — active payment already exists [orderId=1]
+2026-04-22 04:38:33.355 INFO  [main] o.c.c.CheckoutServiceApplicationTests - Starting CheckoutServiceApplicationTests using Java 21.0.8 with PID 35656 (started by Mahmo in D:\Z_Folder\checkout-service)
+2026-04-22 04:38:33.355 INFO  [main] o.c.c.CheckoutServiceApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-04-22 04:38:33.539 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22 04:38:33.637 WARN  [main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22 04:38:33.689 INFO  [main] o.c.c.CheckoutServiceApplicationTests - Started CheckoutServiceApplicationTests in 0.354 seconds (process running for 6.772)
+2026-04-22 04:38:43.819 INFO  [main] o.c.c.i.CheckoutIntegrationTest - Starting CheckoutIntegrationTest using Java 21.0.8 with PID 7880 (started by Mahmo in D:\Z_Folder\checkout-service)
+2026-04-22 04:38:43.819 INFO  [main] o.c.c.i.CheckoutIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-22 04:38:45.550 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22 04:38:46.790 WARN  [main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22 04:38:47.184 INFO  [main] o.c.c.i.CheckoutIntegrationTest - Started CheckoutIntegrationTest in 3.689 seconds (process running for 4.594)
+2026-04-22 04:38:47.249 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:47.310 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=1]
+2026-04-22 04:38:47.385 INFO  [main] o.c.c.cart.api.CartController - POST /carts/1/items [productId=P1, quantity=2]
+2026-04-22 04:38:47.405 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=1, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:47.416 INFO  [main] o.c.c.cart.api.CartController - POST /carts/1/checkout
+2026-04-22 04:38:47.416 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=1]
+2026-04-22 04:38:47.688 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=1, cartId=1, total=19.98]
+2026-04-22 04:38:47.688 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=1, orderId=1]
+2026-04-22 04:38:47.698 INFO  [main] o.c.c.order.api.OrderController - POST /orders/1/payment/start
+2026-04-22 04:38:47.704 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=1, total=19.98]
+2026-04-22 04:38:47.720 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=1, amount=19.98]
+2026-04-22 04:38:47.720 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=1, paymentId=95df681c-c71e-4fb2-9e15-b169d6c61249, externalPaymentId=ext-dup-pay]
+2026-04-22 04:38:47.720 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=1, externalPaymentId=ext-dup-pay]
+2026-04-22 04:38:47.736 INFO  [main] o.c.c.order.api.OrderController - POST /orders/1/payment/start
+2026-04-22 04:38:47.736 WARN  [main] o.c.c.order.service.OrderService - Order is not in a payable state [orderId=1, currentState=PENDING_PAYMENT]
+2026-04-22 04:38:47.742 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Order business rule violation [code=INVALID_ORDER_PAYABLE_STATE]
+2026-04-22 04:38:47.775 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:47.775 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=2]
+2026-04-22 04:38:47.775 INFO  [main] o.c.c.cart.api.CartController - POST /carts/2/checkout
+2026-04-22 04:38:47.775 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=2]
+2026-04-22 04:38:47.775 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Cart business rule violation [code=CART_EMPTY]
+2026-04-22 04:38:47.789 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:47.789 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=3]
+2026-04-22 04:38:47.789 INFO  [main] o.c.c.cart.api.CartController - POST /carts/3/items [productId=P1, quantity=2]
+2026-04-22 04:38:47.794 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=3, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:47.794 INFO  [main] o.c.c.cart.api.CartController - POST /carts/3/checkout
+2026-04-22 04:38:47.794 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=3]
+2026-04-22 04:38:47.794 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=2, cartId=3, total=19.98]
+2026-04-22 04:38:47.794 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=3, orderId=2]
+2026-04-22 04:38:47.806 INFO  [main] o.c.c.order.api.OrderController - GET /orders/2
+2026-04-22 04:38:47.835 INFO  [main] o.c.c.order.api.OrderController - POST /orders/2/payment/start
+2026-04-22 04:38:47.837 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=2, total=19.98]
+2026-04-22 04:38:47.837 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=2, amount=19.98]
+2026-04-22 04:38:47.837 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=2, paymentId=9b5bb12b-cc50-4d4f-909f-a46e2b0d482c, externalPaymentId=ext-happy-1]
+2026-04-22 04:38:47.837 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=2, externalPaymentId=ext-happy-1]
+2026-04-22 04:38:47.840 INFO  [main] o.c.c.order.api.OrderController - GET /orders/2
+2026-04-22 04:38:47.849 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-happy-1, status=CONFIRMED]
+2026-04-22 04:38:47.851 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-happy-1, status=CONFIRMED]
+2026-04-22 04:38:47.853 INFO  [main] o.c.c.payment.service.PaymentService - Payment confirmed [externalPaymentId=ext-happy-1, orderId=2]
+2026-04-22 04:38:47.853 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-happy-1, orderId=2, newOrderState=PAID]
+2026-04-22 04:38:47.856 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=2, from=PENDING_PAYMENT, to=PAID]
+2026-04-22 04:38:47.856 INFO  [main] o.c.c.order.api.OrderController - GET /orders/2
+2026-04-22 04:38:47.867 INFO  [main] o.c.c.order.api.OrderController - GET /orders/9999
+2026-04-22 04:38:47.867 WARN  [main] o.c.c.order.service.OrderService - Order not found [orderId=9999]
+2026-04-22 04:38:47.867 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Resource not found [code=ORDER_NOT_FOUND]
+2026-04-22 04:38:47.874 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:47.874 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=4]
+2026-04-22 04:38:47.874 INFO  [main] o.c.c.cart.api.CartController - POST /carts/4/items [productId=P1, quantity=2]
+2026-04-22 04:38:47.874 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=4, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:47.874 INFO  [main] o.c.c.cart.api.CartController - POST /carts/4/checkout
+2026-04-22 04:38:47.874 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=4]
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=3, cartId=4, total=19.98]
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=4, orderId=3]
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.order.api.OrderController - POST /orders/3/payment/start
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=3, total=19.98]
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=3, amount=19.98]
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=3, paymentId=77787598-7465-428a-ab80-e84bed3c9721, externalPaymentId=ext-guard-1]
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=3, externalPaymentId=ext-guard-1]
+2026-04-22 04:38:47.890 INFO  [main] o.c.c.order.api.OrderController - POST /orders/3/payment/start
+2026-04-22 04:38:47.890 WARN  [main] o.c.c.order.service.OrderService - Order is not in a payable state [orderId=3, currentState=PENDING_PAYMENT]
+2026-04-22 04:38:47.890 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Order business rule violation [code=INVALID_ORDER_PAYABLE_STATE]
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=5]
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.cart.api.CartController - POST /carts/5/items [productId=P1, quantity=2]
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=5, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.cart.api.CartController - POST /carts/5/checkout
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=5]
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=4, cartId=5, total=19.98]
+2026-04-22 04:38:47.904 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=5, orderId=4]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.order.api.OrderController - POST /orders/4/payment/start
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=4, total=19.98]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=4, amount=19.98]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=4, paymentId=edc6ad8a-a08b-48bf-808e-18c81cb3a633, externalPaymentId=ext-dup-1]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=4, externalPaymentId=ext-dup-1]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.service.PaymentService - Payment confirmed [externalPaymentId=ext-dup-1, orderId=4]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-dup-1, orderId=4, newOrderState=PAID]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=4, from=PENDING_PAYMENT, to=PAID]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.order.api.OrderController - GET /orders/4
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.payment.service.PaymentService - Idempotent webhook — payment already in target state [externalPaymentId=ext-dup-1, status=CONFIRMED]
+2026-04-22 04:38:47.920 INFO  [main] o.c.c.order.api.OrderController - GET /orders/4
+2026-04-22 04:38:47.938 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=unknown-ext, status=CONFIRMED]
+2026-04-22 04:38:47.938 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=unknown-ext, status=CONFIRMED]
+2026-04-22 04:38:47.938 WARN  [main] o.c.c.payment.service.PaymentService - Webhook for unknown payment [externalPaymentId=unknown-ext]
+2026-04-22 04:38:47.938 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Resource not found [code=PAYMENT_NOT_FOUND]
+2026-04-22 04:38:47.945 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:47.945 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=6]
+2026-04-22 04:38:47.945 INFO  [main] o.c.c.cart.api.CartController - POST /carts/6/items [productId=P1, quantity=2]
+2026-04-22 04:38:47.949 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=6, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:47.951 INFO  [main] o.c.c.cart.api.CartController - POST /carts/6/checkout
+2026-04-22 04:38:47.951 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=6]
+2026-04-22 04:38:47.953 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=5, cartId=6, total=19.98]
+2026-04-22 04:38:47.953 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=6, orderId=5]
+2026-04-22 04:38:47.953 INFO  [main] o.c.c.cart.api.CartController - POST /carts/6/checkout
+2026-04-22 04:38:47.953 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=6]
+2026-04-22 04:38:47.953 WARN  [main] o.c.c.s.e.GlobalExceptionHandler - Cart business rule violation [code=CART_ALREADY_CHECKED_OUT]
+2026-04-22 04:38:47.953 INFO  [main] o.c.c.order.api.OrderController - GET /orders/5
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.cart.api.CartController - POST /carts
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.cart.service.CartService - Cart created [cartId=7]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.cart.api.CartController - POST /carts/7/items [productId=P1, quantity=2]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.cart.service.CartService - Item added to cart [cartId=7, productId=P1, quantity=2, price=9.99]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.cart.api.CartController - POST /carts/7/checkout
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.cart.service.CartService - Checkout initiated [cartId=7]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.order.service.OrderService - Order created [orderId=6, cartId=7, total=19.98]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.cart.service.CartService - Checkout completed [cartId=7, orderId=6]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.order.api.OrderController - POST /orders/6/payment/start
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=6, total=19.98]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=6, amount=19.98]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=6, paymentId=06458021-0bca-4f8e-9784-8a38d2d1eaae, externalPaymentId=ext-fail-1]
+2026-04-22 04:38:47.961 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=6, externalPaymentId=ext-fail-1]
+2026-04-22 04:38:47.975 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-fail-1, status=FAILED]
+2026-04-22 04:38:47.975 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-fail-1, status=FAILED]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.payment.service.PaymentService - Payment failed [externalPaymentId=ext-fail-1, orderId=6]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-fail-1, orderId=6, newOrderState=PAYMENT_FAILED]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=6, from=PENDING_PAYMENT, to=PAYMENT_FAILED]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.order.api.OrderController - GET /orders/6
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.order.api.OrderController - POST /orders/6/payment/start
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.order.service.OrderService - Starting payment for order [orderId=6, total=19.98]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.payment.service.PaymentService - Requesting payment from provider [orderId=6, amount=19.98]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.payment.service.PaymentService - Payment created [orderId=6, paymentId=68dccf11-0145-4a17-9f98-a83b9d753a86, externalPaymentId=ext-fail-2]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.order.service.OrderService - Payment initiated [orderId=6, externalPaymentId=ext-fail-2]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.payment.api.PaymentController - POST /payments/webhook [externalPaymentId=ext-fail-2, status=CONFIRMED]
+2026-04-22 04:38:47.977 INFO  [main] o.c.c.payment.service.PaymentService - Webhook received [externalPaymentId=ext-fail-2, status=CONFIRMED]
+2026-04-22 04:38:47.985 INFO  [main] o.c.c.payment.service.PaymentService - Payment confirmed [externalPaymentId=ext-fail-2, orderId=6]
+2026-04-22 04:38:47.985 INFO  [main] o.c.c.p.a.PaymentWebhookApplicationService - Transitioning order after webhook [externalPaymentId=ext-fail-2, orderId=6, newOrderState=PAID]
+2026-04-22 04:38:47.985 INFO  [main] o.c.c.order.service.OrderService - Order state transitioned [orderId=6, from=PENDING_PAYMENT, to=PAID]
+2026-04-22 04:38:47.985 INFO  [main] o.c.c.order.api.OrderController - GET /orders/6

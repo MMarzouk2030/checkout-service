@@ -12,25 +12,24 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 @Configuration
 public class AppConfig {
 
-    @Value("${payment.provider.base-url}")
+    @Value("${app.base-url}")
     private String appBaseUrl;
 
     @Bean
     public PaymentClient paymentClient() {
-        RestClient restClient = RestClient.create(appBaseUrl);
-        HttpServiceProxyFactory factory = HttpServiceProxyFactory
-                .builderFor(RestClientAdapter.create(restClient))
-                .build();
-        return factory.createClient(PaymentClient.class);
+        return buildClient(PaymentClient.class);
     }
 
     @Bean
     public PaymentProviderClient paymentProviderClient() {
-        RestClient restClient = RestClient.create(appBaseUrl);
-        HttpServiceProxyFactory factory = HttpServiceProxyFactory
-                .builderFor(RestClientAdapter.create(restClient))
-                .build();
-        return factory.createClient(PaymentProviderClient.class);
+        return buildClient(PaymentProviderClient.class);
     }
 
+    private <T> T buildClient(Class<T> clientType) {
+        RestClient restClient = RestClient.create(appBaseUrl);
+        return HttpServiceProxyFactory
+                .builderFor(RestClientAdapter.create(restClient))
+                .build()
+                .createClient(clientType);
+    }
 }

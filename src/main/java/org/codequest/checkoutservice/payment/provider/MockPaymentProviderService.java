@@ -5,6 +5,7 @@ import org.codequest.checkoutservice.shared.exception.ErrorCode;
 import org.codequest.checkoutservice.shared.exception.ResourceNotFoundException;
 import org.codequest.checkoutservice.shared.model.payment.PaymentRequest;
 import org.codequest.checkoutservice.shared.rest.PaymentClient;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+@Profile("local")
 @Service
 public class MockPaymentProviderService {
 

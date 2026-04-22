@@ -1,12 +1,9 @@
 package org.codequest.checkoutservice.payment.api;
 
-import org.codequest.checkoutservice.shared.model.order.OrderState;
-import org.codequest.checkoutservice.payment.domain.PaymentStatus;
+import org.codequest.checkoutservice.payment.application.PaymentWebhookApplicationService;
 import org.codequest.checkoutservice.payment.dto.WebhookRequest;
-import org.codequest.checkoutservice.payment.exception.PaymentErrorCode;
-import org.codequest.checkoutservice.payment.exception.PaymentException;
-import org.codequest.checkoutservice.payment.service.PaymentService;
-import org.codequest.checkoutservice.shared.facade.order.OrderFacade;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,28 +16,19 @@ import java.util.Map;
 @RequestMapping("/payments")
 public class PaymentController {
 
-    private final PaymentService paymentService;
-    private final OrderFacade orderFacade;
+    private static final Logger log = LoggerFactory.getLogger(PaymentController.class);
 
-    public PaymentController(PaymentService paymentService, OrderFacade orderFacade) {
-        this.paymentService = paymentService;
-        this.orderFacade = orderFacade;
+    private final PaymentWebhookApplicationService webhookApplicationService;
+
+    public PaymentController(PaymentWebhookApplicationService webhookApplicationService) {
+        this.webhookApplicationService = webhookApplicationService;
     }
 
     @PostMapping("/webhook")
     public ResponseEntity<Map<String, String>> handleWebhook(@RequestBody WebhookRequest request) {
-        paymentService.processWebhook(request.externalPaymentId(), request.status())
-                .ifPresent(
-                        payment -> orderFacade.transitOrder(payment.getOrderId(), toOrderState(payment.getStatus()))
-                );
+        log.info("POST /payments/webhook [externalPaymentId={}, status={}]",
+                request.externalPaymentId(), request.status());
+        webhookApplicationService.processWebhook(request.externalPaymentId(), request.status());
         return ResponseEntity.ok(Map.of("result", "processed"));
-    }
-
-    private OrderState toOrderState(PaymentStatus paymentStatus) {
-        return switch (paymentStatus) {
-            case CONFIRMED -> OrderState.PAID;
-            case FAILED -> OrderState.PAYMENT_FAILED;
-            default -> throw new PaymentException(PaymentErrorCode.INVALID_WEBHOOK_STATUS, paymentStatus);
-        };
     }
 }

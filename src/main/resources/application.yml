@@ -8,19 +8,18 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/checkout
     driver-class-name: org.postgresql.Driver
-    username: Mmo2025
-    password: Mmo321321
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl-auto: validate
+    show-sql: false
 
   messages:
     basename: messages
     encoding: UTF-8
 
-payment:
-  provider:
-    base-url: http://localhost:8080
+app:
+  base-url: http://localhost:8080

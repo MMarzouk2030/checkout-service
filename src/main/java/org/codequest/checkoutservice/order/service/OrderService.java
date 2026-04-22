@@ -10,11 +10,15 @@ import org.codequest.checkoutservice.shared.exception.ResourceNotFoundException;
 import org.codequest.checkoutservice.shared.facade.payment.PaymentFacade;
 import org.codequest.checkoutservice.shared.model.cart.CartCheckoutData;
 import org.codequest.checkoutservice.shared.model.payment.PaymentResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderService {
+
+    private static final Logger log = LoggerFactory.getLogger(OrderService.class);
 
     private final OrderRepository orderRepository;
     private final PaymentFacade paymentFacade;
@@ -26,16 +30,27 @@ public class OrderService {
 
     @Transactional
     public Order createOrder(CartCheckoutData data) {
-        // Idempotent: return existing order if already created for this cart
         return orderRepository.findByCartId(data.cartId())
-                .orElseGet(() -> buildAndSave(data));
+                .map(existing -> {
+                    log.info("Order already exists for cart, returning existing [cartId={}, orderId={}]",
+                            data.cartId(), existing.getId());
+                    return existing;
+                })
+                .orElseGet(() -> {
+                    Order order = buildAndSave(data);
+                    log.info("Order created [orderId={}, cartId={}, total={}]",
+                            order.getId(), data.cartId(), data.totalAmount());
+                    return order;
+                });
     }
 
     @Transactional
     public Order cancelOrder(Long orderId) {
         Order order = findOrder(orderId);
         order.transitionTo(OrderState.CANCELLED);
-        return orderRepository.save(order);
+        Order saved = orderRepository.save(order);
+        log.info("Order cancelled [orderId={}]", orderId);
+        return saved;
     }
 
     @Transactional(readOnly = true)
@@ -46,39 +61,38 @@ public class OrderService {
     @Transactional
     public PaymentResponse payForOrder(Long orderId) {
         Order order = validateOrderPayableState(orderId);
+        log.info("Starting payment for order [orderId={}, total={}]", orderId, order.getTotalAmount());
 
         PaymentResponse paymentResponse = paymentFacade.startPayment(order.getId(), order.getTotalAmount());
 
         order.transitionTo(OrderState.PENDING_PAYMENT);
         orderRepository.save(order);
 
+        log.info("Payment initiated [orderId={}, externalPaymentId={}]",
+                orderId, paymentResponse.externalPaymentId());
         return paymentResponse;
     }
 
     @Transactional
     public void transitOrder(Long orderId, OrderState orderState) {
         Order order = findOrder(orderId);
-
+        OrderState previousState = order.getOrderState();
         order.transitionTo(orderState);
-
         orderRepository.save(order);
+        log.info("Order state transitioned [orderId={}, from={}, to={}]",
+                orderId, previousState, orderState);
     }
 
     private Order validateOrderPayableState(Long orderId) {
         Order order = findOrder(orderId);
         if (!order.isInPayableState()) {
+            log.warn("Order is not in a payable state [orderId={}, currentState={}]",
+                    orderId, order.getOrderState());
             throw new OrderException(OrderErrorCode.INVALID_ORDER_PAYABLE_STATE, order.getOrderState());
         }
-
         return order;
     }
 
-    /**
-     * Create the order with items copied from the cart
-     *
-     * @param data cart data for all items listed in cart before already
-     * @return the created order
-     */
     private Order buildAndSave(CartCheckoutData data) {
         Order order = new Order(data.cartId(), data.totalAmount());
         data.items().forEach(item ->
@@ -89,7 +103,9 @@ public class OrderService {
 
     private Order findOrder(Long orderId) {
         return orderRepository.findById(orderId)
-                .orElseThrow(() -> new ResourceNotFoundException(ErrorCode.ORDER_NOT_FOUND));
+                .orElseThrow(() -> {
+                    log.warn("Order not found [orderId={}]", orderId);
+                    return new ResourceNotFoundException(ErrorCode.ORDER_NOT_FOUND);
+                });
     }
-
 }
